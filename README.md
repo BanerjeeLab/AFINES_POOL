@@ -2,6 +2,8 @@
 
 ### AFiNeS: Active Filament Network Simulation ###
 
+#### AFINES MODIFIED TO SIMULATE FILAMENT GROWTH IN LIMITED RESOUCE POOL ####
+
 #### SAME AS OLD README FILE - WILL BE MODIFIED ACCORDINGLY LATER ####
 
 ##### as detailed in : #####
