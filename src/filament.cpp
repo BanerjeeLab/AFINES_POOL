@@ -742,11 +742,8 @@ void filament::update_length()
     double height=0.1;
     double pool_density=20;
     double system_volume=Lx*Ly*height;
-    //system_volume=xrange*yrange*height;
     nfiln=get_nsprings();
     nll=kp*( (rmonomr*system_volume*pool_density) - npolymer*nfiln*lmonomr )/( system_volume ) - km ;
-    //nfiln=get_nsprings();
-    //nll=nsprings_max - nfiln;
     if ( kgrow*lgrow > 0 && this->get_nsprings() + 1 <= nsprings_max && rng(0,1) < nll*dt){
         grow(lgrow/370);
     }
