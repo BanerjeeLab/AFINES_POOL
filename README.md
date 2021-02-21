@@ -2,6 +2,8 @@
 
 ### AFiNeS: Active Filament Network Simulation ###
 
+#### SAME AS OLD README FILE - WILL BE MODIFIED ACCORDINGLY LATER ####
+
 ##### as detailed in : #####
 #### A versatile framework for simulating the dynamics mechanical structure of cytoskeletal networks ####
 
