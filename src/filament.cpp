@@ -76,6 +76,10 @@ filament::filament(array<double, 3> startpos, int nbead, array<double, 2> myfov,
     kb = bending_stiffness;
     kinetic_energy  = 0;
     spring_l0 = spring_length;
+    thickness = 0.1;		// in micro-meter, thickness of the thin system
+    rmonomer=600;		// monomers in 1 micr-meter^3 in 1 micro-molar actin
+    lmonomer=370;		// monomers per 1 micro-meter length of actin
+    km=1;			// unbinding rate in monomer/sec
     
     damp = 6*pi*beadRadius*visc;
     y_thresh = 1;
@@ -728,25 +732,23 @@ void filament::grow(double dL)
     }
 }
 
-void filament::update_length()
+void filament::update_length(int npolymer)
 {
     int nfiln;
     int nll;
-    int npolymer=1;
-    double kp=kgrow;
-    double km=1;
-    double rmonomr=600;
-    double lmonomr=370;
-    double Lx=20;
-    double Ly=20;
-    double height=0.1;
-    double pool_density=20;
-    double system_volume=Lx*Ly*height;
+    double kp=kgrow/rmonomer;
+    double Lx=fov[0];
+    double Ly=fov[1];
+    double system_volume=Lx*Ly*thickness;
     nfiln=get_nsprings();
-    nll=kp*( (rmonomr*system_volume*pool_density) - npolymer*nfiln*lmonomr )/( system_volume ) - km ;
+    nll=kp*( (rmonomer*system_volume*pool_density) - npolymer*nfiln*lmonomer )/( system_volume ) - km ;
     if ( kgrow*lgrow > 0 && this->get_nsprings() + 1 <= nsprings_max && rng(0,1) < nll*dt){
-        grow(lgrow/370);
+        grow(lgrow/lmonomer);
     }
+}
+
+void filament::set_density(double poolden){
+    pool_density = poolden;
 }
 
 void filament::set_kgrow(double k){

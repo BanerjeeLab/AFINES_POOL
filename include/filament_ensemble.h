@@ -171,7 +171,7 @@ class filament_ensemble
         
         void turn_quads_off();
         
-        void set_growing(double, double, double, double, int);
+        void set_growing(double, double, double, double, int, double);
 
     protected:
 

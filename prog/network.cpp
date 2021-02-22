@@ -72,7 +72,7 @@ int main(int argc, char* argv[]){
     bool restart;
     double restart_time;
     
-    double kgrow, lgrow, l0min, l0max;
+    double kgrow, lgrow, l0min, l0max, pool_density;
     int nlink_max;
 
     //Options allowed only on command line
@@ -184,7 +184,8 @@ int main(int argc, char* argv[]){
         
         //Options for filament growth
         ("kgrow", po::value<double>(&kgrow)->default_value(0), "rate of filament growth")
-        ("lgrow", po::value<double>(&lgrow)->default_value(0), "additional length of filament upon growth")
+        ("lgrow", po::value<double>(&lgrow)->default_value(1), "additional length of filament upon growth")
+        ("pool_density", po::value<double>(&pool_density)->default_value(10), "initial actin density in micro-molar")
         ("l0min", po::value<double>(&l0min)->default_value(0), "minimum length a link can shrink to before disappearing")
         ("l0max", po::value<double>(&l0max)->default_value(2), "maximum length a link can grow to before breaking into two links")
         ("nlink_max", po::value<int>(&nlink_max)->default_value(25), "maximum number of links allowed on filament")
@@ -355,7 +356,7 @@ int main(int argc, char* argv[]){
                 fracture_force, bnd_cnd, rmax, kexv); 
     }
     
-    net->set_growing(kgrow, lgrow, l0min, l0max, nlink_max);
+    net->set_growing(kgrow, lgrow, l0min, l0max, nlink_max, pool_density);
     if (link_intersect_flag) p_motor_pos_vec = net->spring_spring_intersections(p_motor_length, p_linkage_prob); 
     if (motor_intersect_flag) a_motor_pos_vec = net->spring_spring_intersections(a_motor_length, a_linkage_prob); 
     

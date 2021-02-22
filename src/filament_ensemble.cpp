@@ -475,7 +475,7 @@ void filament_ensemble::update()
 
     for (int f = 0; f < net_sz; f++){
         
-        network[f]->update_length();
+        network[f]->update_length(net_sz);
         this->update_filament_stretching(f);
         network[f]->update_bending(t);
         network[f]->update_positions();
@@ -1009,12 +1009,13 @@ filament_ensemble::filament_ensemble(vector<vector<double> > beads, array<double
     fls = { };
 }
 
-void filament_ensemble::set_growing(double kgrow, double lgrow, double l0min, double l0max, int nsprings_max)
+void filament_ensemble::set_growing(double kgrow, double lgrow, double l0min, double l0max, int nsprings_max, double pool_density)
 {
     nsprings_per_fil_max = nsprings_max;
     for (int i = 0; i < int(network.size()); i++){
         network[i]->set_kgrow(kgrow);
         network[i]->set_lgrow(lgrow);
+        network[i]->set_density(pool_density);
         network[i]->set_l0_min(l0min);
         network[i]->set_l0_max(l0max);
         network[i]->set_nsprings_max(nsprings_max);

@@ -132,12 +132,14 @@ class filament
         void set_l0_min(double);
         
         void set_kgrow(double);
+
+	void set_density(double);
         
         void set_lgrow(double);
         
         array<double,2> get_bead_position(int bead);
 
-        void update_length();
+        void update_length(int net_sz);
 
         void grow(double);
 
@@ -147,7 +149,8 @@ class filament
         
         double kb, temperature, dt, fracture_force, fracture_force_sq, kinetic_energy, damp, kToverLp, bd_prefactor, ubend;
         double gamma, max_shear, delrx, y_thresh;
-        double spring_l0, l0_max, l0_min, kgrow, lgrow;
+        double thickness,rmonomer,lmonomer, km;
+        double spring_l0, l0_max, l0_min, kgrow, lgrow, pool_density;
         int nsprings_max;
         
         array<double,2> fov;
