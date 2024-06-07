@@ -221,7 +221,7 @@ of 0.05 you would enter the command:
 |**GROWTH**                 |       |               |       ||
 |kgrow                      |double |0              |uMs^(-1) |rate of filament growth|
 |lgrow                      |double |1              |um     |additional length of filament upon growth|
-|pool_density               |double |10             |uM     |differential strain (e.g., 0.5 means a strain of 0.5*xrange)|
+|pool_density               |double |10             |uM     |Overall actin concentration (Factin + Gactin)|
 |l0min                      |double |0              |um     |minimum length a link can shrink to before disappearing|
 |l0max                      |double |2              |um     |maximum length a link can grow to before breaking into two links|
 |nlink_max                  |double |25             |       |maximum number of links allowed on the filament|
