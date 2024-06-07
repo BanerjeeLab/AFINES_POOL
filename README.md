@@ -4,19 +4,17 @@
 
 #### AFINES MODIFIED TO SIMULATE FILAMENT GROWTH IN LIMITED RESOUCE POOL ####
 
-#### SAME AS OLD README FILE - WILL BE MODIFIED ACCORDINGLY LATER ####
-
 ##### as detailed in : #####
+#### Growth-induced collective bending and kinetic trapping of cytoskeletal filaments ####
+[Paper Link](https://onlinelibrary.wiley.com/doi/10.1002/cm.21877) 
 #### A versatile framework for simulating the dynamics mechanical structure of cytoskeletal networks ####
+[Paper Link](https://doi.org/10.1016/j.bpj.2017.06.003)
 
 ### Authors / Contributors ###
 
+* Deb S Banerjee (Carnegie Mellon University)
 * Simon Freedman (University of Chicago) 
-* Shiladitya Banerjee (University College London) 
-* Glen Hocky (University of Chicago)
-* Aaron Dinner (University of Chicago)
-
-#### created at the University of Chicago ####
+* Shiladitya Banerjee (Carnegie Mellon University) 
 
 ### System Requirements ###
 Minimally, this system requires gcc+11 and boost which you can load on midway via the commands
@@ -220,6 +218,13 @@ of 0.05 you would enter the command:
 |osc_strain_flag            |boolean|false          |       |flag to use if differential strain should be oscillatory (like Gardel, Science 2004)|
 |n_bw_shear                 |int    |10^8           |s      |number of timesteps between subsequent differential strains |
 |d_strain_freq              |double |1              |Hz     |frequency of differential oscillatory strain|
+|**GROWTH**                 |       |               |       ||
+|kgrow                      |double |0              |uMs^(-1) |rate of filament growth|
+|lgrow                      |double |1              |um     |additional length of filament upon growth|
+|pool_density               |double |10             |uM     |differential strain (e.g., 0.5 means a strain of 0.5*xrange)|
+|l0min                      |double |0              |um     |minimum length a link can shrink to before disappearing|
+|l0max                      |double |2              |um     |maximum length a link can grow to before breaking into two links|
+|nlink_max                  |double |25             |       |maximum number of links allowed on the filament|
 
 ### Configuration file Example ###
 Below is an example of a configuration file named example.cfg. 
@@ -242,9 +247,9 @@ actin_pos_str=0,0,0:1,2,3.141
 
 ### Contribution guidelines ###
 
-* Email: dinner@uchicago.edu
+* Email: shiladtb@andrew.cmu.edu
 
 ### Who do I talk to? ###
 
-* Simon Freedman (simonfreedman@uchicago.edu)
-* Aaron Dinner (dinner@uchicago.edu)
+* Deb S Banerjee (dsbanerjee@uchicago.edu)
+* Shiladitya Banerjee (shiladtb@andrew.cmu.edu)
